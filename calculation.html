@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Billing Calculator</title>
+    <link rel="icon" type="image/jpg" href="images/faviptml-removebg-preview.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-image: radial-gradient(rgb(193, 14, 209),rgb(147, 214, 245));
+            
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="radio"],
+        input[type="number"],
+        input[type="text"] {
+            margin-right: 10px;
+        }
+        input[type="submit"],
+        button {
+            background-color: #9029b9;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 1s ease;
+        }
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #a384eb;
+        }
+        .info {
+            background-color: #e7f3fe;
+            padding: 10px;
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 12px;
+            background-color: #e0f7ff;
+            color: #09356a;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .bill {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .bill-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .bill-header h2 {
+            margin: 0;
+        }
+        .bill-details p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Electric Billing Calculator</h1>
+    <form id="billingForm">
+        <div class="form-group">
+            <label>Season:</label>
+            <input type="radio" name="season" value="summer" required> Summer
+            <input type="radio" name="season" value="winter" required> Winter
+        </div>
+        <div class="form-group">
+            <label>Do you own an electric vehicle (EV)?</label>
+            <input type="radio" name="ev" value="yes" required> Yes
+            <input type="radio" name="ev" value="no" required> No
+        </div>
+        <div class="form-group">
+            <label for="usage">Enter your monthly electricity usage (kWh):</label>
+            <input type="number" id="usage" name="usage" min="0" max="99999" required>
+            <small>Please enter a value less than 5 digits.</small>
+            <div class="info">
+                <p><strong>How to know your electricity usage:</strong></p>
+                <p>You can find your monthly electricity usage on your electricity bill. Look for the section labeled "Usage" or "Consumption" which will be measured in kilowatt-hours (kWh).</p>
+                <p>If you don't have a recent bill, you can estimate your usage by adding up the wattage of all your appliances and how many hours they are used each month. For example, a 100-watt light bulb used for 10 hours a day would consume:</p>
+                <p>100 watts * 10 hours/day * 30 days/month = 30,000 watt-hours/month or 30 kWh/month</p>
+            </div>
+        </div>
+        <input type="submit" value="Calculate Bill">
+    </form>
+
+    <div id="result" class="result hidden"></div>
+    <button id="payButton" class="hidden">Pay</button>
+    <button id="checkBalanceButton" class="hidden">Check Balance</button>
+
+    <div id="paymentForm" class="hidden">
+        <form id="addFundsForm">
+            <h3>Add Funds</h3>
+            <div class="form-group">
+                <label for="cardNumber">Visa Debit/Credit Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required pattern="\d{16}">
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required pattern="\d{3}">
+            </div>
+            <div class="form-group">
+                <label for="expiry">Expiry Date (MM/YY):</label>
+                <input type="text" id="expiry" name="expiry" required pattern="(0[1-9]|1[0-2])\/(2[0-9])">
+            </div>
+            <div class="form-group">
+                <label for="addAmount">Amount to Add:</label>
+                <input type="number" id="addAmount" name="addAmount" min="0" required>
+            </div>
+            <input type="submit" value="Add Funds">
+        </form>
+    </div>
+
+    <div id="balance" class="result hidden"></div>
+    <audio src="audio/relaxing-lofi-beat-155068.mp3" autoplay loop></audio>
+
+    <script src="calculation.js"></script>
+</body>
+</html>

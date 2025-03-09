@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <link rel="icon" type="image/jpg" href="images/faviptml-removebg-preview.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: linear-gradient(45deg, rgb(70, 1, 160),rgb(128, 55, 162), rgb(54, 141, 165));
+            background-size: 300% 300%;
+            animation: color 100s ease infinite;
+            
+        }
+        @keyframes color{
+            0%{
+                background-position: 0 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+        h1 {
+            color: black;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: purple;
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 15px;
+            background-color: rgb(255, 0, 111);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            transition: background-color 1s ease ;
+        }
+
+        input[type="button"]:hover {
+            background-color: rgb(183, 0, 255);
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: left;
+        }
+        .terms {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        .terms a {
+            color: blue;
+            text-decoration: none;
+        }
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <label for="myemail">Enter your email to proceed</label>
+        <input type="text" id="myemail"><br>
+
+        <label for="mypassword">Choose a Password</label>
+        <input type="password" id="mypassword"><br>
+
+        <label for="mypassword2">Re-enter your password</label>
+        <input type="password" id="mypassword2"><br>
+
+        <div class="terms">
+            <input type="checkbox" id="myterm">
+            <label for="myterm">I have read and accepted the <a href="termofservice.html">terms of service</a></label>
+        </div>
+
+        <input type="button" id="mysubmit" value="Sign Up">
+
+
+        <div class="error-message" id="error-message"></div>
+
+        
+    </div>
+    <audio src="audio/relaxing-lofi-beat-155068.mp3" autoplay loop></audio>
+    <script type="module" src="signup.js"></script>
+</body>
+</html>
